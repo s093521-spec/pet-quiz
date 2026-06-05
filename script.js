@@ -439,7 +439,7 @@ function initPetGrid() {
     'chihuahua', 'poodle', 'shiba', 'cat',
     'snake', 'hamster', 'rabbit', 'cow'
   ];
-  const mysteryIndex = Math.floor(Math.random() * pets.length);
+  const mysteryIndex = pets.length - 1; // 固定最後一個壓黑問號
   let html = '';
   pets.forEach((pet, index) => {
     const isMystery = index === mysteryIndex;
