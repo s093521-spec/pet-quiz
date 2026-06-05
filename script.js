@@ -157,6 +157,7 @@ function resetQuiz() {
   const introBg = document.getElementById('intro-bg');
   if (introBg) introBg.classList.remove('hidden');
   
+  initPetGrid(); // 重新隨機生成首頁寵物圖
   showScreen('intro');
 }
 
@@ -429,3 +430,26 @@ function closeAdInterstitial() {
     el.style.transition = '';
   }, 300);
 }
+
+// ── 首頁寵物圖 ──
+function initPetGrid() {
+  const grid = document.getElementById('pet-grid');
+  if (!grid) return;
+  const pets = [
+    'chihuahua', 'poodle', 'shiba', 'cat',
+    'snake', 'hamster', 'rabbit', 'cow'
+  ];
+  const mysteryIndex = Math.floor(Math.random() * pets.length);
+  let html = '';
+  pets.forEach((pet, index) => {
+    const isMystery = index === mysteryIndex;
+    html += `
+      <div class="pet-icon-wrap ${isMystery ? 'mystery' : ''}">
+        <img src="result_${pet}.png" class="pet-icon" alt="pet">
+      </div>
+    `;
+  });
+  grid.innerHTML = html;
+}
+
+document.addEventListener('DOMContentLoaded', initPetGrid);

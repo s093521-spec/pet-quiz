@@ -173,27 +173,53 @@ body::after {
   color: var(--text-muted);
   margin-bottom: 30px;
 }
-.emoji-bar {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.pet-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 12px;
   margin-bottom: 30px;
+  justify-items: center;
+  max-width: 280px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.emoji-icon {
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
+.pet-icon-wrap {
+  width: 56px;
+  height: 56px;
   background: var(--surface);
   border-radius: 50%;
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
   transition: transform 0.2s;
 }
-.emoji-icon:hover {
+.pet-icon-wrap:hover {
   transform: scale(1.1);
+}
+.pet-icon {
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
+}
+
+/* 壓黑問號神秘感 */
+.pet-icon-wrap.mystery .pet-icon {
+  filter: brightness(0);
+  opacity: 0.85;
+}
+.pet-icon-wrap.mystery::after {
+  content: '?';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 26px;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
 }
 .cta-btn {
   background: linear-gradient(135deg, var(--accent), var(--accent2));
